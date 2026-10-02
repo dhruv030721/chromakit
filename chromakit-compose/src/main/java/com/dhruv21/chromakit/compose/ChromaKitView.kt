@@ -49,12 +49,7 @@ fun ChromaKitPreview(
 
     AndroidView(
         factory = { ctx ->
-            ChromaGLSurfaceView(ctx).apply {
-                // Wire the controller's shared renderer
-                setEGLContextClientVersion(2)
-                setRenderer(controller.renderer)
-                renderMode = GLSurfaceView.RENDERMODE_CONTINUOUSLY
-            }
+            ChromaGLSurfaceView(ctx, controller.renderer)
         },
         modifier = modifier
     )

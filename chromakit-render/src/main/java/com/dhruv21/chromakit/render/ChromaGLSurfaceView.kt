@@ -7,12 +7,14 @@ import android.util.AttributeSet
 /**
  * Custom [GLSurfaceView] hosting the [ChromaRenderer].
  */
-class ChromaGLSurfaceView @JvmOverloads constructor(
+class ChromaGLSurfaceView(
     context: Context,
-    attrs: AttributeSet? = null
+    attrs: AttributeSet? = null,
+    val renderer: ChromaRenderer = ChromaRenderer()
 ) : GLSurfaceView(context, attrs) {
 
-    val renderer = ChromaRenderer()
+    constructor(context: Context, renderer: ChromaRenderer) : this(context, null, renderer)
+    constructor(context: Context) : this(context, null, ChromaRenderer())
 
     init {
         setEGLContextClientVersion(2)
